@@ -8,12 +8,13 @@ This document is a step-by-step guide to :
 
 I. Install cardano-node on docker
 1. We'll be working in a new directory , create directory structure to store everything about cardano node:
-├── /opt/cardano                        # Folder which holds everything
-   ├── docker-compose.yml               # docker-compose config
-   ├── cardano-node-data                # store immutable data , ledger
-   ├── cardano-node-ipc                 # store node socket file
-   ├── config                           # store network , topology and eras configs
-   └── note                             # store environment variables file - for convinence
+
+/opt/cardano                        # Folder which holds everything
+   docker-compose.yml               # docker-compose config
+   cardano-node-data                # store immutable data , ledger
+   cardano-node-ipc                 # store node socket file
+   config                           # store network , topology and eras configs
+   note                             # store environment variables file - for convinence
 
 2. Create/Edit docker-compose.yml:
 version: '3.1'
