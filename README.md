@@ -3,4 +3,6 @@ Assume that you have installed docker on Linux server (If you have not , google 
 You want to do lab at https://developers.cardano.org (Installing cardano-node , Installing cardano-wallet , Discover Native Tokens , etc...)
 
 This document is a step-by-step guide to :
--
+- Install cardano-node on docker
+- Connect cardano-cli / cardano-wallet from host to cardano-node container on same host
+
