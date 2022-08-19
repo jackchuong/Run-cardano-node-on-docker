@@ -1,0 +1,25 @@
+version: '3.1'
+
+networks:
+  net:
+    driver: bridge
+
+services:
+  cardano-node:
+    image: inputoutput/cardano-node:1.33.0
+    volumes:
+      - ./cardano-node-ipc:/ipc
+      - ./cardano-node-data:/data
+      - ./note:/note
+      - ./config:/configt
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - NETWORK=testnet
+      - CARDANO_NODE_SOCKET_PATH=/ipc/node.socket
+    networks:
+      - net
+    ports:
+      - "3001:3001"
+    expose:
+      - 3001
+    restart: unless-stopped
