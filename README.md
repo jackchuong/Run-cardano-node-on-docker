@@ -68,6 +68,22 @@ CONTAINER ID   IMAGE                             COMMAND                  CREATE
 6f84b2672dec   inputoutput/cardano-node:1.33.0   "entrypoint"             2 days ago     Up 2 days              0.0.0.0:3001->3001/tcp                  cardano_cardano-node_1
 ```
 
+6. Access to your cardano-node container
+```bash
+# exec bash shell inside your container
+docker exec -it cardano_cardano-node_1 bash
+bash-4.4# source note/variables.sh     # export environment variables
+bash-4.4# cardano-cli query tip $testnet
+{
+    "era": "Alonzo",
+    "syncProgress": "95.87",
+    "hash": "87b389fe8e6157254d13eef09bdd13ac5b0995c0aea7ffbc1f2714c516d34eb6",
+    "epoch": 214,
+    "slot": 62502587,
+    "block": 3680370
+}
+```
+
 II. Connect cardano-cli / cardano-wallet from host to cardano-node container
 1. You can download the latest pre-built binaries of cardano-cli/cardano-wallet (for Linux in my case) from the link https://hydra.iohk.io/job/Cardano/cardano-wallet/cardano-wallet-linux64/latest
 
