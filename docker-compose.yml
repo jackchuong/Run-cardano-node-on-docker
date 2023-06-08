@@ -1,25 +1,20 @@
 version: '3.1'
 
-networks:
-  net:
-    driver: bridge
-
 services:
   cardano-node:
-    image: inputoutput/cardano-node:1.33.0
+    image: inputoutput/cardano-node:1.35.5
+    container_name: your_node_name #for ex : cardarno-node
     volumes:
       - ./cardano-node-ipc:/ipc
       - ./cardano-node-data:/data
-      - ./note:/note
-      - ./config:/configt
+      - ./config:/config
+      - ./cardano-wallet:/cardano-wallet
     environment:
-      - TZ=Asia/Ho_Chi_Minh
-      - NETWORK=testnet
-      - CARDANO_NODE_SOCKET_PATH=/ipc/node.socket
-    networks:
-      - net
+      - TZ="your timezone" # for ex : "Asia/Ho_Chi_Minh"
+      - CARDANO_NODE_SOCKET_PATH="/ipc/node.socket"
+      - DOCKER_CLIENT_TIMEOUT=120
+      - COMPOSE_HTTP_TIMEOUT=120
+      - NETWORK=preprod
     ports:
       - "3001:3001"
-    expose:
-      - 3001
     restart: unless-stopped
