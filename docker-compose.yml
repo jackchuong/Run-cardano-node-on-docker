@@ -3,18 +3,25 @@ version: '3.1'
 services:
   cardano-node:
     image: inputoutput/cardano-node:1.35.5
-    container_name: your_node_name #for ex : cardarno-node
+    container_name: cardano-node #for ex : cardarno-node
     volumes:
       - ./cardano-node-ipc:/ipc
       - ./cardano-node-data:/data
       - ./config:/config
       - ./cardano-wallet:/cardano-wallet
     environment:
-      - TZ="your timezone" # for ex : "Asia/Ho_Chi_Minh"
-      - CARDANO_NODE_SOCKET_PATH="/ipc/node.socket"
+      - TZ=Asia/Ho_Chi_Minh # for ex : "Asia/Ho_Chi_Minh"
+      - CARDANO_NODE_SOCKET_PATH=/ipc/node.socket
+      - CARDANO_CLI=/cardano-wallet/cardano-cli
+      - TESTNET_MAGIC=1
       - DOCKER_CLIENT_TIMEOUT=120
       - COMPOSE_HTTP_TIMEOUT=120
       - NETWORK=preprod
     ports:
       - "3001:3001"
     restart: unless-stopped
+    networks:
+      - cardanonet
+
+networks:
+  cardanonet:
