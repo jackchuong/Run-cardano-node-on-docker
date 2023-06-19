@@ -21,7 +21,9 @@ services:
       - "3001:3001"
     restart: unless-stopped
     networks:
-      - cardanonet
+      - bworksnet
 
 networks:
-  cardanonet:
+  bworksnet:
+    name: bworksnet
+    driver: bridge
