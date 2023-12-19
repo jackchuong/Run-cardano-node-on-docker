@@ -13,7 +13,7 @@ This document is a step-by-step guide to :
    |---docker-compose.yml               # docker-compose config
    |---cardano-node-data                # store immutable data , ledger , etc...
    |---cardano-node-ipc                 # store node socket file node.socket
-   |---config                           # store network , topology and eras configs
+   |---configuration                    # store network , topology and eras configs
    |---cardano-wallet			# cardano wallet binaries
 ```
 2. Compile cardano wallet binaries your self or use downloaded latest pre-built binaries of cardano-wallet in this repo, please refer https://developers.cardano.org/docs/get-started/installing-cardano-wallet
