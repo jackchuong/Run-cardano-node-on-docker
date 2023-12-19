@@ -59,15 +59,14 @@ mint_token() {
     	submit_exit_code=$?
     	if [ $submit_exit_code -eq 0 ]; then
         	echo "Minted token successfully"
-        	exit 0
+		# Displays wallet balance after minting tokens
+        	sleep 10
+        	echo "Wallet balance:"
+        	$CARDANO_CLI query utxo --address $address $NET
+		exit 0
     	else
         	echo "Error submitting transaction. Exit code: $submit_exit_code"
         	exit $submit_exit_code
     	fi
-
-        # Displays wallet balance after minting tokens
-        sleep 10
-        echo "Wallet balance:"
-        $CARDANO_CLI query utxo --address $address $NET
 }
 
