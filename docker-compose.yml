@@ -3,15 +3,14 @@ version: '3.1'
 services:
   cardano-node:
     image: inputoutput/cardano-node:1.35.5
-    container_name: cardano-node #for ex : cardarno-node
+    container_name: cardano-node
     volumes:
       - ./cardano-node-ipc:/ipc
       - ./cardano-node-data:/data
-      #- ./config:/config
       - ./configuration:/configuration
       - ./cardano-wallet:/cardano-wallet
     environment:
-      - TZ=Asia/Ho_Chi_Minh # for ex : "Asia/Ho_Chi_Minh"
+      - TZ=Asia/Ho_Chi_Minh
       - CARDANO_NODE_SOCKET_PATH=/ipc/node.socket
       - CARDANO_CLI=/cardano-wallet/cardano-cli
       - TESTNET_MAGIC=1
@@ -25,17 +24,17 @@ services:
     networks:
       - cardano-node-net
 
-  socat-cardano-node:
-    image: alpine/socat
-    container_name: socat-cardano-node
-    volumes:
-      - ./cardano-node-ipc:/ipc
-    command: "TCP-LISTEN:3001,fork,reuseaddr, UNIX-CONNECT:/ipc/node.socket"
-    ports:
-      - "3001:3001"
-    restart: unless-stopped
-    networks:
-      - cardano-node-net
+  #socat-cardano-node:
+  #  image: alpine/socat
+  #  container_name: socat-cardano-node
+  #  volumes:
+  #    - ./cardano-node-ipc:/ipc
+  #  command: "TCP-LISTEN:3001,fork,reuseaddr, UNIX-CONNECT:/ipc/node.socket"
+  #  ports:
+  #    - "3001:3001"
+  #  restart: unless-stopped
+  #  networks:
+  #    - cardano-node-net
 
 networks:
   cardano-node-net:

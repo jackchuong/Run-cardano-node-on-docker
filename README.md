@@ -3,7 +3,7 @@ Assume that you have installed docker on Linux server (If you have not , google 
 You want to do lab at https://developers.cardano.org (Installing cardano-node , Installing cardano-wallet , Discover Native Tokens , etc...)
 
 This document is a step-by-step guide to :
-- Install cardano-node on docker
+- Install cardano-node on docker (Preprod Testnet --testnet-magic 1)
 - Connect cardano-cli / cardano-wallet from host to cardano-node container on same host
 
 ## Install cardano-node on docker
@@ -27,8 +27,8 @@ docker-compose -f docker-compose.yml up -d    # start node
 docker-compose -f docker-compose.yml down     # stop node
 
 docker ps -a # check result
-CONTAINER ID   IMAGE                             COMMAND                  CREATED        STATUS                 PORTS                                   NAMES
-6f84b2672dec   inputoutput/cardano-node:1.33.5   "entrypoint"             2 days ago     Up 2 days              0.0.0.0:3001->3001/tcp                  cardano_cardano-node_1
+CONTAINER ID   IMAGE                             COMMAND                  CREATED        STATUS       PORTS                                                                                      NAMES
+b43766a12766   inputoutput/cardano-node:1.35.5   "entrypoint"             5 hours ago    Up 5 hours                                                                                              cardano-node
 ```
 
 5. Access to your cardano-node container
@@ -44,4 +44,11 @@ bash-4.4# cardano-cli query tip --testnet-magic 1
     "slot": 62502587,
     "block": 3680370
 }
+```
+
+6. mint_token function only accept utxo as below format
+```
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
 ```
