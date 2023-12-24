@@ -95,3 +95,56 @@ Wallet balance:
 30a9759a9cf020ac8c895d18a8b0ad9a051a4b35097494611301cf8cdf50bcee     0        9980569965 lovelace + 1000 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
 f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
 ```
+
+7. Burn new token function only accept utxo as below format
+```
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+30a9759a9cf020ac8c895d18a8b0ad9a051a4b35097494611301cf8cdf50bcee     0        9980569965 lovelace + 1000 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
+```
+- TxHash , TxIx without existed token policyid.tokennameec16 will not be accepted , for ex:
+```
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+ba56c327d66b6da1d8e27628532533891ae59170f9dfd611c95aed410bdb6328     0        9980390604 lovelace + TxOutDatumNone
+```
+- This is output when use script to burn token
+```
+Choose the action you want:
+1. Create new wallet
+2. Mint new token
+3. Mint more existing tokens
+4. Send token to another wallet
+5. Burn token
+Press CTRL+C to exit
+Enter the number corresponding to the action: 5
+You have chosen: Burn token
+Your wallet balance:
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+2ab313a6cd9382f89b3b489859cb55d1c95ebbfb14f8f5b93cecb8c102ba5926     0        9980209175 lovelace + 1000 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
+f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
+Please provide information about token that you want to burn
+Token name: bworks
+tokenname in encode base 16: 62776f726b73
+Amount of token: 100
+Please pick TxHash , TxIx that you want to use to pay for minting tokens, make sure the one you choose has at least 1000000 lovelaces
+Insert your txhash here: 2ab313a6cd9382f89b3b489859cb55d1c95ebbfb14f8f5b93cecb8c102ba5926
+Insert your TxIx here: 0
+build raw transaction
+calculating fee
+fee: 181209
+tokenremain: 900
+lovelace remain: 9980027966
+rebuild transaction
+sign transaction
+submit transaction
+Transaction successfully submitted.
+Burned token successfully
+Wallet balance::
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+10eb88f4b23d002b09b7ab1b063ef9ef1b21360c0b3d009af3bd9aeff54c313b     0        9980027966 lovelace + 900 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
+f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
+```
+NOTE: If the amount of token you entered >= remain token in UTXO , it will burn all remain tokens

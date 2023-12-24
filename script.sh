@@ -49,6 +49,6 @@ case $action in
     ;;
   5)
     echo "You have chosen: Burn token"
-    #burn_token
+    burn_token
     ;;
 esac
