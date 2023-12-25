@@ -9,7 +9,7 @@ done
 
 check_cardano_env
 
-NET="--testnet-magic 1"
+NET="--mainnet"
 
 # List actions
 while true; do

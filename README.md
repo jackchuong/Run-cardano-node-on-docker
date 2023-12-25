@@ -3,7 +3,7 @@ Assume that you have installed docker on Linux server (If you have not , google 
 You want to do lab at https://developers.cardano.org (Installing cardano-node , Installing cardano-wallet , Discover Native Tokens , etc...)
 
 This document is a step-by-step guide to :
-- Install cardano-node on docker (Preprod Testnet --testnet-magic 1)
+- Install cardano-node on docker (Mainnet --mainnet, USE WITH CAUTION!!!)
 - Connect cardano-cli / cardano-wallet from host to cardano-node container on same host
 
 ## Install cardano-node on docker
@@ -245,3 +245,4 @@ Wallet balance::
 ca4e391cef69af129426fd896f4669ff82d6df2ad922844ba31cff0a1ba19370     0        9977667352 lovelace + 2400 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
 f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
 ```
+

@@ -13,10 +13,10 @@ services:
       - TZ=Asia/Ho_Chi_Minh
       - CARDANO_NODE_SOCKET_PATH=/ipc/node.socket
       - CARDANO_CLI=/cardano-wallet/cardano-cli
-      - TESTNET_MAGIC=1
       - DOCKER_CLIENT_TIMEOUT=120
       - COMPOSE_HTTP_TIMEOUT=120
-      - NETWORK=preprod
+
+      - NETWORK=mainnet
       - HOST-ADDR="0.0.0.0"
     #ports:
     #  - "3001:3001"
