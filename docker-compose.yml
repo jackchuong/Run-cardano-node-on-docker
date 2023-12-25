@@ -15,6 +15,7 @@ services:
       - CARDANO_CLI=/cardano-wallet/cardano-cli
       - DOCKER_CLIENT_TIMEOUT=120
       - COMPOSE_HTTP_TIMEOUT=120
+
       - NETWORK=mainnet
       - HOST-ADDR="0.0.0.0"
     #ports:
@@ -22,6 +23,18 @@ services:
     restart: unless-stopped
     networks:
       - cardano-node-net
+
+  #socat-cardano-node:
+  #  image: alpine/socat
+  #  container_name: socat-cardano-node
+  #  volumes:
+  #    - ./cardano-node-ipc:/ipc
+  #  command: "TCP-LISTEN:3001,fork,reuseaddr, UNIX-CONNECT:/ipc/node.socket"
+  #  ports:
+  #    - "3001:3001"
+  #  restart: unless-stopped
+  #  networks:
+  #    - cardano-node-net
 
 networks:
   cardano-node-net:

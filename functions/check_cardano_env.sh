@@ -17,5 +17,8 @@ check_cardano_env() {
 
     echo "Press CTRL+C to exit or wait 10 seconds to automatically exit."
     sleep 10
+    echo "Please ensure that you run this script in the environment there is already cardano node and cardano-cli."
+    export CARDANO_NODE_SOCKET_PATH=`pwd`"/cardano-node-ipc/node.socket"
+    export CARDANO_CLI=`pwd`"/cardano-wallet/cardano-cli"
   fi
 }

@@ -41,14 +41,14 @@ case $action in
     ;;
   3)
     echo "You have chosen: Mint more existing tokens"
-    #mint_more_token
+    mint_more_token
     ;;
   4)
     echo "You have chosen: Send token to another wallet"
-    #send_token
+    send_token
     ;;
   5)
     echo "You have chosen: Burn token"
-    #burn_token
+    burn_token
     ;;
 esac
