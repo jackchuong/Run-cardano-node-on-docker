@@ -96,7 +96,7 @@ Wallet balance:
 f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
 ```
 
-7. Burn new token function only accept utxo as below format
+7. Burn token & send token to other address functions only accept utxo as below format
 ```
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
@@ -147,4 +147,101 @@ Wallet balance::
 10eb88f4b23d002b09b7ab1b063ef9ef1b21360c0b3d009af3bd9aeff54c313b     0        9980027966 lovelace + 900 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
 f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
 ```
-NOTE: If the amount of token you entered >= remain token in UTXO , it will burn all remain tokens
+NOTE: If the amount of token you entered >= remain token in UTXO , it will burn or send all remain tokens
+
+- This is output when use script to send token to other wallet:
+```
+Choose the action you want:
+1. Create new wallet
+2. Mint new token
+3. Mint more existing tokens
+4. Send token to another wallet
+5. Burn token
+Press CTRL+C to exit
+Enter the number corresponding to the action: 4
+You have chosen: Send token to another wallet
+Your wallet balance:
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+10eb88f4b23d002b09b7ab1b063ef9ef1b21360c0b3d009af3bd9aeff54c313b     0        9980027966 lovelace + 900 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
+f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
+Please provide receiver address
+Receiver Address: addr_test1qqr585tvlc7ylnqvz8pyqwauzrdu0mxag3m7q56grgmgu7sxu2hyfhlkwuxupa9d5085eunq2qywy7hvmvej456flknswgndm3
+Please provide information about token that you want to send
+Token name: bworks
+tokenname in encode base 16: 62776f726b73
+Amount of token: 500
+Please pick TxHash , TxIx that you want to use to pay for minting tokens
+        Caution: We are forced to send at least a minimum of 2 ada (2000000 Lovelace) to the foreign address, make sure the one you choose has at least 3000000 lovelaces (3 ADA)
+Insert your txhash here: 10eb88f4b23d002b09b7ab1b063ef9ef1b21360c0b3d009af3bd9aeff54c313b
+Insert your TxIx here: 0
+build raw transaction
+calculating fee
+fee: 179361
+tokenremain: 400
+lovelace remain: 9977848605
+rebuild transaction
+sign transaction
+submit transaction
+Transaction successfully submitted.
+Sent token successfully
+Wallet balance:
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+67bba5bab9405d1417d7b9c5efb53eb2f2ec20a2aaaf3fef355b48884fc16a0d     1        9977848605 lovelace + 400 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
+f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
+```
+
+8. Mint more token function only accept utxo as below format
+```
+Your wallet balance:
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+67bba5bab9405d1417d7b9c5efb53eb2f2ec20a2aaaf3fef355b48884fc16a0d     1        9977848605 lovelace + 400 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
+```
+- TxHash , TxIx without existed token policyid.tokennameec16 will not be accepted , for ex:
+```
+Your wallet balance:
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
+```
+- This is output when use script to mint more token
+```
+Choose the action you want:
+1. Create new wallet
+2. Mint new token
+3. Mint more existing tokens
+4. Send token to another wallet
+5. Burn token
+Press CTRL+C to exit
+Enter the number corresponding to the action: 3
+You have chosen: Mint more existing tokens
+Your wallet balance:
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+67bba5bab9405d1417d7b9c5efb53eb2f2ec20a2aaaf3fef355b48884fc16a0d     1        9977848605 lovelace + 400 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
+f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
+Please provide information about token that you want to mint
+Token name: bworks
+tokenname in encode base 16: 62776f726b73
+Amount of token: 2000
+Please pick TxHash , TxIx that you want to use to pay for minting tokens, make sure the one you choose has at least 1000000 lovelaces
+Insert your txhash here: 67bba5bab9405d1417d7b9c5efb53eb2f2ec20a2aaaf3fef355b48884fc16a0d
+Insert your TxIx here: 1
+build raw transaction
+calculating fee
+fee: 181253
+Amount of token after minting more: 2400
+lovelace remain: 9977667352
+rebuild transaction
+sign transaction
+submit transaction
+Transaction successfully submitted.
+Minted more token successfully
+Wallet balance::
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+ca4e391cef69af129426fd896f4669ff82d6df2ad922844ba31cff0a1ba19370     0        9977667352 lovelace + 2400 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
+f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
+```
