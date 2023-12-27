@@ -72,16 +72,15 @@ You have chosen: Mint new token
 Your wallet balance:
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
-25131ef9569210f13436689ed3bd685ff88de8cf55b3f02b29f51cc7abf7b970     0        9980751394 lovelace + TxOutDatumNone
-f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
+56867c37cbb3b84d1658c7ffa201ede4ddd46361c620d54d9d72896bead54e24     0        5000000 lovelace + TxOutDatumNone
 Please provide information about token that you want to mint
-Token name: bworks
-tokenname in encode base 16: 62776f726b73
-Amount of token: 1000
+Token name: Bworks
+tokenname in encode base 16: 42776f726b73
+Amount of token: 1000000
 Please pick TxHash , TxIx that you want to use to pay for minting tokens, make sure the one you choose has at least 1000000 lovelaces
-Insert your txhash here: 25131ef9569210f13436689ed3bd685ff88de8cf55b3f02b29f51cc7abf7b970
+Insert your txhash here: 56867c37cbb3b84d1658c7ffa201ede4ddd46361c620d54d9d72896bead54e24
 Insert your TxIx here: 0
-You have selected TxHash , TxIx has enough lovelace balance: 9980751394 lovelace
+You have selected TxHash , TxIx has enough lovelace balance: 5000000 lovelace
 build raw transtion
 calculating fee
 rebuild transaction
@@ -92,8 +91,7 @@ Minted token successfully
 Wallet balance:
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
-30a9759a9cf020ac8c895d18a8b0ad9a051a4b35097494611301cf8cdf50bcee     0        9980569965 lovelace + 1000 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
-f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
+38295af98de31019566c3f1b119126eb526e22ba1c64a1382fe912f355352147     0        4818659 lovelace + 1000000 cfe1de163a2907e491f258551d1ac53c6052c7beb4ff2310b0ba016f.42776f726b73 + TxOutDatumNone
 ```
 
 7. Burn token & send token to other address functions only accept utxo as below format
@@ -163,23 +161,22 @@ You have chosen: Send token to another wallet
 Your wallet balance:
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
-10eb88f4b23d002b09b7ab1b063ef9ef1b21360c0b3d009af3bd9aeff54c313b     0        9980027966 lovelace + 900 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
-f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
+38295af98de31019566c3f1b119126eb526e22ba1c64a1382fe912f355352147     0        4818659 lovelace + 1000000 cfe1de163a2907e491f258551d1ac53c6052c7beb4ff2310b0ba016f.42776f726b73 + TxOutDatumNone
 Please provide receiver address
-Receiver Address: addr_test1qqr585tvlc7ylnqvz8pyqwauzrdu0mxag3m7q56grgmgu7sxu2hyfhlkwuxupa9d5085eunq2qywy7hvmvej456flknswgndm3
+Receiver Address: addr1q8zgq6akyqakkey6vekeud5g6rar8sn4p7a3gsvw8xn08amxrq56yxqtmp7ctslgen4naa6d0qvp00t60jyvmmqh9xlq0ty4af
 Please provide information about token that you want to send
-Token name: bworks
-tokenname in encode base 16: 62776f726b73
-Amount of token: 500
+Token name: Bworks
+tokenname in encode base 16: 42776f726b73
+Amount of token: 1000000
 Please pick TxHash , TxIx that you want to use to pay for minting tokens
         Caution: We are forced to send at least a minimum of 2 ada (2000000 Lovelace) to the foreign address, make sure the one you choose has at least 3000000 lovelaces (3 ADA)
-Insert your txhash here: 10eb88f4b23d002b09b7ab1b063ef9ef1b21360c0b3d009af3bd9aeff54c313b
+Insert your txhash here: 38295af98de31019566c3f1b119126eb526e22ba1c64a1382fe912f355352147
 Insert your TxIx here: 0
 build raw transaction
 calculating fee
-fee: 179361
-tokenremain: 400
-lovelace remain: 9977848605
+fee: 177425
+tokenremain: 0
+lovelace remain: 2641234
 rebuild transaction
 sign transaction
 submit transaction
@@ -188,8 +185,7 @@ Sent token successfully
 Wallet balance:
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
-67bba5bab9405d1417d7b9c5efb53eb2f2ec20a2aaaf3fef355b48884fc16a0d     1        9977848605 lovelace + 400 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
-f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
+b7be9ba2dd240feb42b2a4b35b212c9478daa60fa6910bd08eef1bbfaae8e269     1        2641234 lovelace + TxOutDatumNone
 ```
 
 8. Mint more token function only accept utxo as below format
