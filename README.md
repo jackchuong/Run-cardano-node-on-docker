@@ -1,13 +1,13 @@
 # Run-cardano-node-on-docker
-Assume that you have installed docker on Linux server (If you have not , google "how to install docker/docker-compose on Ubuntu/Centos")
-You want to do lab at https://developers.cardano.org (Installing cardano-node , Installing cardano-wallet , Discover Native Tokens , etc...)
+- Assume that you have installed docker on Linux server (If you have not , google "how to install docker/docker-compose on Ubuntu/Centos")
+- You want to do lab at https://developers.cardano.org (Installing cardano-node , Installing cardano-wallet , Discover Native Tokens , etc...)
 
 This document is a step-by-step guide to :
-- Install cardano-node on docker (Mainnet --mainnet, USE WITH CAUTION!!!)
+- Install cardano-node on docker (Pre-production --testnet-magic 1)
 - Connect cardano-cli / cardano-wallet from host to cardano-node container on same host
 
 ## Install cardano-node on docker
-1. We'll be working in a new directory , create directory structure to store everything about cardano node:
+1. We'll be working in a new directory , create directory structure to store everything about cardano node (or just clone my repo)
 ```bash
 |---/opt/cardano                        # Folder which holds everything
    |---docker-compose.yml               # docker-compose config
@@ -16,9 +16,9 @@ This document is a step-by-step guide to :
    |---configuration                    # store network , topology and eras configs
    |---cardano-wallet			# cardano wallet binaries
 ```
-2. Compile cardano wallet binaries your self or use downloaded latest pre-built binaries of cardano-wallet in this repo, please refer https://developers.cardano.org/docs/get-started/installing-cardano-wallet
+2. Compile cardano wallet binaries your self or use downloaded latest pre-built binaries of cardano-wallet in this repo, please refer https://developers.cardano.org/docs/get-started/installing-cardano-wallet (ignore this step if you clone my repo)
 
-3. Download configuration files or you can use mines , copy them to config folder , please refer https://developers.cardano.org/docs/get-started/running-cardano
+3. Download configuration files or you can use mines , copy them to config folder , please refer https://developers.cardano.org/docs/get-started/running-cardano (ignore this step if you clone my repo)
 
 4. Start/stop cardano node:
 ```bash
@@ -46,6 +46,7 @@ bash-4.4# cardano-cli query tip --testnet-magic 1
 }
 ```
 
+## Do lab with shell script
 6. Mint new token function only accept utxo as below format
 ```
                            TxHash                                 TxIx        Amount

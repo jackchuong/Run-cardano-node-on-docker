@@ -15,8 +15,7 @@ services:
       - CARDANO_CLI=/cardano-wallet/cardano-cli
       - DOCKER_CLIENT_TIMEOUT=120
       - COMPOSE_HTTP_TIMEOUT=120
-
-      - NETWORK=mainnet
+      - NETWORK=--testnet-magic 1
       - HOST-ADDR="0.0.0.0"
     #ports:
     #  - "3001:3001"
