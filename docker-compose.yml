@@ -2,7 +2,8 @@ version: '3.1'
 
 services:
   cardano-node:
-    image: inputoutput/cardano-node:1.35.5
+    #image: inputoutput/cardano-node:1.35.5
+    image: ghcr.io/intersectmbo/cardano-node:8.8.0-pre-test-sg-1
     container_name: cardano-node
     volumes:
       - ./cardano-node-ipc:/ipc
@@ -15,7 +16,7 @@ services:
       - CARDANO_CLI=/cardano-wallet/cardano-cli
       - DOCKER_CLIENT_TIMEOUT=120
       - COMPOSE_HTTP_TIMEOUT=120
-      - NETWORK=--testnet-magic 1
+      - NETWORK=preprod
       - HOST-ADDR="0.0.0.0"
     #ports:
     #  - "3001:3001"
