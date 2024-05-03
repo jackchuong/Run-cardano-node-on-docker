@@ -1,6 +1,6 @@
 create_policy() {
   mkdir -p tokens/policy
-  address=$(cat tokens/payment.addr)
+  #address=$(cat tokens/payment.addr)
 
   $CARDANO_CLI query protocol-parameters $NET --out-file tokens/protocol.json
   $CARDANO_CLI address key-gen --verification-key-file tokens/policy/policy.vkey --signing-key-file tokens/policy/policy.skey
