@@ -15,6 +15,7 @@ This document is a step-by-step guide to :
    |---cardano-node-ipc                 # store node socket file node.socket
    |---configuration                    # store network , topology and eras configs
    |---cardano-wallet			# cardano wallet binaries
+   |---tokens                   	# store payment address , policyID of token
 ```
 2. Compile cardano wallet binaries your self or use downloaded latest pre-built binaries of cardano-wallet in this repo, please refer https://developers.cardano.org/docs/get-started/installing-cardano-wallet (ignore this step if you clone my repo)
 
@@ -43,6 +44,18 @@ bash-4.4# cardano-cli query tip --testnet-magic 1
     "epoch": 214,
     "slot": 62502587,
     "block": 3680370
+}
+
+Or use setenv.sh
+source setenv.sh
+$CARDANO_CLI query tip $NET
+{
+    "block": 2574131,
+    "epoch": 160,
+    "era": "Babbage",
+    "hash": "e9dbd32ceafeca281f6ea7f501e5eb4c4794ba781ee02613f734dac9eeaac173",
+    "slot": 67690344,
+    "syncProgress": "100.00"
 }
 ```
 
@@ -247,3 +260,39 @@ ca4e391cef69af129426fd896f4669ff82d6df2ad922844ba31cff0a1ba19370     0        99
 f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
 ```
 
+9. Send ADA and token to multi wallet
+```
+list.txt
+cat list.txt
+addr_test1vz6aay995sa8rdaajlzxlkcldjg9c5zxp7j298a8dhqchrgkasc0m 0 100
+addr_test1vq88zrwjrqdrzpuv2vp4fxsx2r2skyxkkvlkrdvlyxs9w0gh92vyl 0 200
+addr_test1vrp5gyf7tv895uns6gyfjh8f0w5r5j66s20y7n877v70hfsjm9n5q 0 300
+```
+
+```
+./send_token_multi_addresses.sh ./list.txt Chuong_Test_1 13d4032273c910b6877e968b4cc11c3264ac8ac1ece4d2e1d9e5c2403517c774 0
+raw_transaction is : /opt/preprod/Run-cardano-node-on-docker/cardano-wallet/cardano-cli transaction build-raw --fee 0 --tx-in 13d4032273c910b6877e968b4cc11c3264ac8ac1ece4d2e1d9e5c2403517c774#0 --tx-out addr_test1vz6aay995sa8rdaajlzxlkcldjg9c5zxp7j298a8dhqchrgkasc0m+2000000+"100 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31" --tx-out addr_test1vq88zrwjrqdrzpuv2vp4fxsx2r2skyxkkvlkrdvlyxs9w0gh92vyl+2000000+"200 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31" --tx-out addr_test1vrp5gyf7tv895uns6gyfjh8f0w5r5j66s20y7n877v70hfsjm9n5q+2000000+"300 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31" --tx-out addr_test1vrkq5fk3ulkplsy5sd2h97peka0tu2g4mljjp6w8wl24eesm5fy8z+9993817779+"99999400 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31" --out-file tokens/rec_matx.raw
+Rebuilt raw_transaction is : /opt/preprod/Run-cardano-node-on-docker/cardano-wallet/cardano-cli transaction build-raw --fee 192649 --tx-in 13d4032273c910b6877e968b4cc11c3264ac8ac1ece4d2e1d9e5c2403517c774#0 --tx-out addr_test1vz6aay995sa8rdaajlzxlkcldjg9c5zxp7j298a8dhqchrgkasc0m+2000000+"100 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31" --tx-out addr_test1vq88zrwjrqdrzpuv2vp4fxsx2r2skyxkkvlkrdvlyxs9w0gh92vyl+2000000+"200 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31" --tx-out addr_test1vrp5gyf7tv895uns6gyfjh8f0w5r5j66s20y7n877v70hfsjm9n5q+2000000+"300 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31" --tx-out addr_test1vrkq5fk3ulkplsy5sd2h97peka0tu2g4mljjp6w8wl24eesm5fy8z+9993625130+"99999400 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31" --out-file tokens/rec_matx.raw
+Transaction successfully submitted.
+Sent token successfully
+
+$CARDANO_CLI query utxo --address $address $NET
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+42f4a8152ae7a495755aaf6e0e73662111dc92d7051d5f6ade9787bcbaf3cadc     3        9993625130 lovelace + 99999400 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31 + TxOutDatumNone
+
+$CARDANO_CLI query utxo --address addr_test1vz6aay995sa8rdaajlzxlkcldjg9c5zxp7j298a8dhqchrgkasc0m $NET
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+42f4a8152ae7a495755aaf6e0e73662111dc92d7051d5f6ade9787bcbaf3cadc     0        2000000 lovelace + 100 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31 + TxOutDatumNone
+
+$CARDANO_CLI query utxo --address addr_test1vq88zrwjrqdrzpuv2vp4fxsx2r2skyxkkvlkrdvlyxs9w0gh92vyl $NET
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+42f4a8152ae7a495755aaf6e0e73662111dc92d7051d5f6ade9787bcbaf3cadc     1        2000000 lovelace + 200 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31 + TxOutDatumNone
+
+$CARDANO_CLI query utxo --address addr_test1vrp5gyf7tv895uns6gyfjh8f0w5r5j66s20y7n877v70hfsjm9n5q $NET
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+42f4a8152ae7a495755aaf6e0e73662111dc92d7051d5f6ade9787bcbaf3cadc     2        2000000 lovelace + 300 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31 + TxOutDatumNone
+```
