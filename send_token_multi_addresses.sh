@@ -26,7 +26,7 @@ check_policy_existence
 address=$(cat tokens/payment.addr)
 selected_utxo=$($CARDANO_CLI query utxo --address $address $NET)
 policyid=$(cat tokens/policy/policyID)
-fee="0"
+#fee="0"
 receiver_output="2000000" # Fixed lovelace amount
 tokennameec16=$(echo -n "$token_name" | xxd -ps | tr -d '\n')
 
@@ -52,7 +52,8 @@ if echo "$token_amount" | grep -q "The TxHash , TxIx you selected"; then
 fi
 
 # Initialize raw transaction
-raw_transaction="$CARDANO_CLI transaction build-raw --fee $fee --tx-in $txhash#$txix"
+#raw_transaction="$CARDANO_CLI transaction build-raw --fee $fee --tx-in $txhash#$txix"
+raw_transaction="$CARDANO_CLI latest transaction build --tx-in $txhash#$txix"
 
 # Initialize total cost of lovelace and tokens
 totalcostlovelace=0
@@ -62,55 +63,56 @@ totalcosttoken=0
 while IFS=" " read -r receiver lovelace tokenamt; do
     receiver_output_adjusted=$((receiver_output + lovelace))
     raw_transaction+=" --tx-out $receiver+$receiver_output_adjusted+\"$tokenamt $policyid.$tokennameec16\""
-    totalcostlovelace=$((totalcostlovelace + receiver_output_adjusted))
-    totalcosttoken=$((totalcosttoken + tokenamt))
+    #totalcostlovelace=$((totalcostlovelace + receiver_output_adjusted))
+    #totalcosttoken=$((totalcosttoken + tokenamt))
 done < "$file_path"
 
 # Calculate remaining tokens and output balance
-tokenremain=$((token_amount - totalcosttoken))
-output=$((funds - fee - totalcostlovelace))
+#tokenremain=$((token_amount - totalcosttoken))
+#output=$((funds - fee - totalcostlovelace))
 
 # Add change output to the raw transaction
-raw_transaction+=" --tx-out $address+$output+\"$tokenremain $policyid.$tokennameec16\" --out-file tokens/rec_matx.raw"
+#raw_transaction+=" --tx-out $address+$output+\"$tokenremain $policyid.$tokennameec16\" --out-file tokens/rec_matx.raw"
+raw_transaction+=" --change-address $address $NET --out-file tokens/rec_matx.raw"
 
 echo "raw_transaction is : $raw_transaction"
 eval $raw_transaction
 
 # Calculate fee
-fee=$($CARDANO_CLI transaction calculate-min-fee --tx-body-file tokens/rec_matx.raw --tx-in-count 1 --tx-out-count $(($(wc -l < "$file_path")+1)) --witness-count 1 $NET --protocol-params-file tokens/protocol.json | cut -d " " -f1)
+#fee=$($CARDANO_CLI transaction calculate-min-fee --tx-body-file tokens/rec_matx.raw --tx-in-count 1 --tx-out-count $(($(wc -l < "$file_path")+1)) --witness-count 1 $NET --protocol-params-file tokens/protocol.json | cut -d " " -f1)
 
 # Update output balance after fee deduction
-output=$((funds - fee - totalcostlovelace))
+#output=$((funds - fee - totalcostlovelace))
 
 # Rebuild transaction with updated fee and output balance
-raw_transaction="$CARDANO_CLI transaction build-raw --fee $fee --tx-in $txhash#$txix"
+#raw_transaction="$CARDANO_CLI transaction build-raw --fee $fee --tx-in $txhash#$txix"
 
 # Rebuild tx_outs
-while IFS=" " read -r receiver lovelace tokenamt; do
-    receiver_output_adjusted=$((receiver_output + lovelace))
-    raw_transaction+=" --tx-out $receiver+$receiver_output_adjusted+\"$tokenamt $policyid.$tokennameec16\""
-done < "$file_path"
+#while IFS=" " read -r receiver lovelace tokenamt; do
+#    receiver_output_adjusted=$((receiver_output + lovelace))
+#    raw_transaction+=" --tx-out $receiver+$receiver_output_adjusted+\"$tokenamt $policyid.$tokennameec16\""
+#done < "$file_path"
 
 # Add change output
-raw_transaction+=" --tx-out $address+$output+\"$tokenremain $policyid.$tokennameec16\" --out-file tokens/rec_matx.raw"
+#raw_transaction+=" --tx-out $address+$output+\"$tokenremain $policyid.$tokennameec16\" --out-file tokens/rec_matx.raw"
 
-echo "Rebuilt raw_transaction is : $raw_transaction"
-eval $raw_transaction
+#echo "Rebuilt raw_transaction is : $raw_transaction"
+#eval $raw_transaction
 
 # Sign transaction
-$CARDANO_CLI transaction sign --signing-key-file tokens/payment.skey $NET --tx-body-file tokens/rec_matx.raw --out-file tokens/rec_matx.signed
+$CARDANO_CLI latest transaction sign --signing-key-file tokens/payment.skey $NET --tx-body-file tokens/rec_matx.raw --out-file tokens/rec_matx.signed
+# Get TxHash from signed transaction
+TX_HASH=$($CARDANO_CLI latest transaction txid --tx-file tokens/rec_matx.signed)
 
 # Submit transaction
-$CARDANO_CLI transaction submit --tx-file tokens/rec_matx.signed $NET
+$CARDANO_CLI latest transaction submit --tx-file tokens/rec_matx.signed $NET
 
 # Check submit result
 submit_exit_code=$?
 if [ $submit_exit_code -eq 0 ]; then
     echo "Sent token successfully"
-    # Display wallet balance after minting tokens
-    sleep 10
-    echo "Wallet balance:"
-    $CARDANO_CLI query utxo --address $address $NET
+	DATE=$(date)
+	echo "Summited TxHash:" ${TX_HASH} "Date:" ${DATE}
     exit 0
 else
     echo "Error submitting transaction. Exit code: $submit_exit_code"

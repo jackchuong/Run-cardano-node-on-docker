@@ -8,8 +8,8 @@ send_token() {
         $CARDANO_CLI query utxo --address $address $NET
         selected_utxo=$($CARDANO_CLI query utxo --address $address $NET)
         policyid=$(cat tokens/policy/policyID)
-        fee="0"
-        output="0"
+        #fee="0"
+        #output="0"
 	receiver_output="2000000"
 
     echo "Please provide receiver address"
@@ -67,29 +67,31 @@ send_token() {
 	done
 
         # Start sending...
-        echo "build raw transaction"
-        $CARDANO_CLI transaction build-raw --fee $fee --tx-in $txhash#$txix --tx-out $receiver+$receiver_output+"$tokenamount $policyid.$tokennameec16" --tx-out $address+$output+"$tokenremain $policyid.$tokennameec16" --out-file tokens/rec_matx.raw
-        echo "calculating fee"
-	fee=$($CARDANO_CLI transaction calculate-min-fee --tx-body-file tokens/rec_matx.raw --tx-in-count 1 --tx-out-count 2 --witness-count 1 $NET --protocol-params-file tokens/protocol.json | cut -d " " -f1)
-	echo "fee: $fee"
-	echo "tokenremain: $tokenremain"
-        output=$(expr $funds - $fee - $receiver_output)
-	echo "lovelace remain: $output"
-        echo "rebuild transaction"
-        $CARDANO_CLI transaction build-raw --fee $fee --tx-in $txhash#$txix --tx-out $receiver+$receiver_output+"$tokenamount $policyid.$tokennameec16" --tx-out $address+$output+"$tokenremain $policyid.$tokennameec16" --out-file tokens/rec_matx.raw
+        #echo "build raw transaction"
+        #$CARDANO_CLI transaction build-raw --fee $fee --tx-in $txhash#$txix --tx-out $receiver+$receiver_output+"$tokenamount $policyid.$tokennameec16" --tx-out $address+$output+"$tokenremain $policyid.$tokennameec16" --out-file tokens/rec_matx.raw
+        #echo "calculating fee"
+	#fee=$($CARDANO_CLI transaction calculate-min-fee --tx-body-file tokens/rec_matx.raw --tx-in-count 1 --tx-out-count 2 --witness-count 1 $NET --protocol-params-file tokens/protocol.json | cut -d " " -f1)
+	#echo "fee: $fee"
+	#echo "tokenremain: $tokenremain"
+        #output=$(expr $funds - $fee - $receiver_output)
+	#echo "lovelace remain: $output"
+        #echo "rebuild transaction"
+        #$CARDANO_CLI transaction build-raw --fee $fee --tx-in $txhash#$txix --tx-out $receiver+$receiver_output+"$tokenamount $policyid.$tokennameec16" --tx-out $address+$output+"$tokenremain $policyid.$tokennameec16" --out-file tokens/rec_matx.raw
+	echo "build transaction"
+        $CARDANO_CLI latest transaction build --tx-in $txhash#$txix --tx-out $receiver+$receiver_output+"$tokenamount $policyid.$tokennameec16" --change-address $address $NET --out-file tokens/rec_matx.raw
         echo "sign transaction"
-	$CARDANO_CLI transaction sign --signing-key-file tokens/payment.skey $NET --tx-body-file tokens/rec_matx.raw --out-file tokens/rec_matx.signed
+	$CARDANO_CLI latest transaction sign --signing-key-file tokens/payment.skey $NET --tx-body-file tokens/rec_matx.raw --out-file tokens/rec_matx.signed
+	# Get TxHash from signed transaction
+        TX_HASH=$($CARDANO_CLI latest transaction txid --tx-file tokens/rec_matx.signed)
         echo "submit transaction"
-	$CARDANO_CLI transaction submit --tx-file tokens/rec_matx.signed $NET
+	$CARDANO_CLI latest transaction submit --tx-file tokens/rec_matx.signed $NET
 
         # check submit result
         submit_exit_code=$?
         if [ $submit_exit_code -eq 0 ]; then
             echo "Sent token successfully"
-		# Displays wallet balance after minting tokens
-        	sleep 10
-        	echo "Wallet balance:"
-        	$CARDANO_CLI query utxo --address $address $NET
+		DATE=$(date)
+                echo "Summited TxHash:" ${TX_HASH} "Date:" ${DATE}
             exit 0
         else
             echo "Error submitting transaction. Exit code: $submit_exit_code"

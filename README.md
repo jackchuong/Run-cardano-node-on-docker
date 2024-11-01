@@ -96,18 +96,13 @@ Please pick TxHash , TxIx that you want to use to pay for minting tokens, make s
 Insert your txhash here: 25131ef9569210f13436689ed3bd685ff88de8cf55b3f02b29f51cc7abf7b970
 Insert your TxIx here: 0
 You have selected TxHash , TxIx has enough lovelace balance: 9980751394 lovelace
-build raw transtion
-calculating fee
-rebuild transaction
+build transaction
+Estimated transaction fee: 181253 Lovelace
 sign transaction
 submit transaction
 Transaction successfully submitted.
 Minted token successfully
-Wallet balance:
-                           TxHash                                 TxIx        Amount
---------------------------------------------------------------------------------------
-30a9759a9cf020ac8c895d18a8b0ad9a051a4b35097494611301cf8cdf50bcee     0        9980569965 lovelace + 1000 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
-f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
+Summited TxHash: xxx Date:
 ```
 
 7. Burn token & send token to other address functions only accept utxo as below format
@@ -145,21 +140,13 @@ Amount of token: 100
 Please pick TxHash , TxIx that you want to use to pay for minting tokens, make sure the one you choose has at least 1000000 lovelaces
 Insert your txhash here: 2ab313a6cd9382f89b3b489859cb55d1c95ebbfb14f8f5b93cecb8c102ba5926
 Insert your TxIx here: 0
-build raw transaction
-calculating fee
-fee: 181209
-tokenremain: 900
-lovelace remain: 9980027966
-rebuild transaction
+build transaction
+Estimated transaction fee: 181209 Lovelace
 sign transaction
 submit transaction
 Transaction successfully submitted.
 Burned token successfully
-Wallet balance::
-                           TxHash                                 TxIx        Amount
---------------------------------------------------------------------------------------
-10eb88f4b23d002b09b7ab1b063ef9ef1b21360c0b3d009af3bd9aeff54c313b     0        9980027966 lovelace + 900 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
-f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
+Summited TxHash: xxx Date:
 ```
 NOTE: If the amount of token you entered >= remain token in UTXO , it will burn or send all remain tokens
 
@@ -189,21 +176,13 @@ Please pick TxHash , TxIx that you want to use to pay for minting tokens
         Caution: We are forced to send at least a minimum of 2 ada (2000000 Lovelace) to the foreign address, make sure the one you choose has at least 3000000 lovelaces (3 ADA)
 Insert your txhash here: 10eb88f4b23d002b09b7ab1b063ef9ef1b21360c0b3d009af3bd9aeff54c313b
 Insert your TxIx here: 0
-build raw transaction
-calculating fee
-fee: 179361
-tokenremain: 400
-lovelace remain: 9977848605
-rebuild transaction
+build transaction
+Estimated transaction fee: 179361 Lovelace
 sign transaction
 submit transaction
 Transaction successfully submitted.
 Sent token successfully
-Wallet balance:
-                           TxHash                                 TxIx        Amount
---------------------------------------------------------------------------------------
-67bba5bab9405d1417d7b9c5efb53eb2f2ec20a2aaaf3fef355b48884fc16a0d     1        9977848605 lovelace + 400 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
-f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
+Summited TxHash: xxx Date:
 ```
 
 8. Mint more token function only accept utxo as below format
@@ -243,56 +222,30 @@ Amount of token: 2000
 Please pick TxHash , TxIx that you want to use to pay for minting tokens, make sure the one you choose has at least 1000000 lovelaces
 Insert your txhash here: 67bba5bab9405d1417d7b9c5efb53eb2f2ec20a2aaaf3fef355b48884fc16a0d
 Insert your TxIx here: 1
-build raw transaction
-calculating fee
-fee: 181253
-Amount of token after minting more: 2400
-lovelace remain: 9977667352
-rebuild transaction
+build transaction
+Estimated transaction fee: 181253 Lovelace
 sign transaction
 submit transaction
 Transaction successfully submitted.
 Minted more token successfully
-Wallet balance::
-                           TxHash                                 TxIx        Amount
---------------------------------------------------------------------------------------
-ca4e391cef69af129426fd896f4669ff82d6df2ad922844ba31cff0a1ba19370     0        9977667352 lovelace + 2400 39a863a56e0aef381749e08c5903b46da65bfcc1730e4b839905ff98.62776f726b73 + TxOutDatumNone
-f3f548266c71a95d379c7afd557b62821da93f01d2044df0f12cdc02c0e94821     0        10000000000 lovelace + TxOutDatumNone
+Summited TxHash: xxx Date: 
 ```
 
 9. Send ADA and token to multi wallet
 ```
 list.txt
 cat list.txt
-addr_test1vz6aay995sa8rdaajlzxlkcldjg9c5zxp7j298a8dhqchrgkasc0m 0 100
-addr_test1vq88zrwjrqdrzpuv2vp4fxsx2r2skyxkkvlkrdvlyxs9w0gh92vyl 0 200
-addr_test1vrp5gyf7tv895uns6gyfjh8f0w5r5j66s20y7n877v70hfsjm9n5q 0 300
+addr_test1vz6aay995sa8rdaajlzxlkcldjg9c5zxp7j298a8dhqchrgkasc0m 0 500
+addr_test1vq88zrwjrqdrzpuv2vp4fxsx2r2skyxkkvlkrdvlyxs9w0gh92vyl 0 500
+addr_test1vrp5gyf7tv895uns6gyfjh8f0w5r5j66s20y7n877v70hfsjm9n5q 0 500
+...
 ```
 
 ```
-./send_token_multi_addresses.sh ./list.txt Chuong_Test_1 13d4032273c910b6877e968b4cc11c3264ac8ac1ece4d2e1d9e5c2403517c774 0
-raw_transaction is : /opt/preprod/Run-cardano-node-on-docker/cardano-wallet/cardano-cli transaction build-raw --fee 0 --tx-in 13d4032273c910b6877e968b4cc11c3264ac8ac1ece4d2e1d9e5c2403517c774#0 --tx-out addr_test1vz6aay995sa8rdaajlzxlkcldjg9c5zxp7j298a8dhqchrgkasc0m+2000000+"100 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31" --tx-out addr_test1vq88zrwjrqdrzpuv2vp4fxsx2r2skyxkkvlkrdvlyxs9w0gh92vyl+2000000+"200 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31" --tx-out addr_test1vrp5gyf7tv895uns6gyfjh8f0w5r5j66s20y7n877v70hfsjm9n5q+2000000+"300 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31" --tx-out addr_test1vrkq5fk3ulkplsy5sd2h97peka0tu2g4mljjp6w8wl24eesm5fy8z+9993817779+"99999400 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31" --out-file tokens/rec_matx.raw
-Rebuilt raw_transaction is : /opt/preprod/Run-cardano-node-on-docker/cardano-wallet/cardano-cli transaction build-raw --fee 192649 --tx-in 13d4032273c910b6877e968b4cc11c3264ac8ac1ece4d2e1d9e5c2403517c774#0 --tx-out addr_test1vz6aay995sa8rdaajlzxlkcldjg9c5zxp7j298a8dhqchrgkasc0m+2000000+"100 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31" --tx-out addr_test1vq88zrwjrqdrzpuv2vp4fxsx2r2skyxkkvlkrdvlyxs9w0gh92vyl+2000000+"200 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31" --tx-out addr_test1vrp5gyf7tv895uns6gyfjh8f0w5r5j66s20y7n877v70hfsjm9n5q+2000000+"300 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31" --tx-out addr_test1vrkq5fk3ulkplsy5sd2h97peka0tu2g4mljjp6w8wl24eesm5fy8z+9993625130+"99999400 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31" --out-file tokens/rec_matx.raw
+./send_token_multi_addresses.sh list.txt bWorksApp 24d221b7079ea76d75855ed75bcab364747321c0c5180318c3356f2a1d93e2f1 1
+raw_transaction is : /opt/preprod/Run-cardano-node-on-docker/cardano-wallet/cardano-cli-10.1.1 latest transaction build --tx-in 24d221b7079ea76d75855ed75bcab364747321c0c5180318c3356f2a1d93e2f1#1 --tx-out addr_test1vz6aay995sa8rdaajlzxlkcldjg9c5zxp7j298a8dhqchrgkasc0m+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vq88zrwjrqdrzpuv2vp4fxsx2r2skyxkkvlkrdvlyxs9w0gh92vyl+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vrp5gyf7tv895uns6gyfjh8f0w5r5j66s20y7n877v70hfsjm9n5q+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vrytgm4p7dckfpdjehpm3w263rsgh0tujtjue3eej5rh2lsczr8qs+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vz52h0cn9ua9vl8ak4yz4czas3sf3ftjy82a5tt7ladhufqyuk45c+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vrzxk63rul738v5uwhu0mwkxcmu5ywlakzg2wy0t4828lkqsnexwz+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vzzf58lunc938phx8mhdwzed6jhujakjm9akrdsmfv4jnjc4hjft6+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vpe5502tm9rvzvaltqykaqgfrmqkyxuklup0rtx5q44rzrg2zkgzr+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vqyc7c2pa76autwvt44nsn5gyyt4eg38ny4zfe5es0tyakck7ytz8+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vz4g97yw8new0llzvx0n5sk3dye4hh9gghy3wvya4rrwx3qwz25g6+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vqjycpfjxghycdg2544y40pfuwtskhg8dd63cey7sgm7fes7g0t2u+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vz6yyzuw447mneh8g5nltn29ayrch89s7p9jjszckk45ntcya6c00+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vqelmcyhjegpc9ayjnx0csy4u6l34zs45wnc935az4qqkgcw2v89q+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vp0j78pagqrmn2cygk9nff4lc26fkv7xves4n50llhg0tfq6jraq3+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vrvk39xu29tfhdq5rvne5jclef4pgmdtwsau8cz4x9kfvxs5sygha+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vrr26cgfs090fg08u2h76czn02enp8ech83lfdmhxp5ueac0elmpv+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vzvydh3y9ke9ukzya3vgn9xs7x5cnrkp6q6uwj636gftwlql0kyph+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vrlt32l3ezk8ar64x6n8qy99qcvsdf48fllhtyflyxtgvxgcgvmhp+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vpv7tdsq5z89zrzakc6us685ag74nmnkn4ycufkp49xta4q60dut2+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vp2rwxwggyw03u2tj5qvae8pc9w30xnhwkfp5jfczv927nshkxzw9+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vz2xeewrwvu0hycfkfafq7gd4gzyu80w4wztch8xjffu0ss8x73ng+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vq85rztacaukayeqfgdlvr9tye6hf75sl3v5nrx4vclylwq2d6kfn+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vpl38tpnhmrjld95klmja9hzvncjnlmth5ns5cuxwhe9q6ccy8d6v+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vq56gtsn87tf4gw20k67jdv47fpn6dlcatf0zp4v8ev8sfqs9sywd+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vz9qg27dy69xrwt9xey5xzmxt5x3t09ftq8uv3rjrgpsg6s0zyjwx+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vphjy837m8lpvg4mjpeegjuxlayjtgshc78r0wkt4jpdrsctuqam0+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vpsdx5xu2zvdfe7gy0scz8jdvsp2euc2tl8lhy47xjw7g3qw5r6jv+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vrqa0ztjskzqplh74yx3yln4hanqm5h8uzr4yqpnqtyuh8gst0nv9+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vqtpn7wcjja93wvp4lcyqea6yf7vu2w5t9xvgxg5tztxy8c2ydx2e+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --tx-out addr_test1vquqt4rcjujcffx28h2xn0wu722len3v4k3l25ctdrszlyq7ccv6v+2000000+"500 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.62576f726b73417070" --change-address addr_test1vrkq5fk3ulkplsy5sd2h97peka0tu2g4mljjp6w8wl24eesm5fy8z --testnet-magic 1 --out-file tokens/rec_matx.raw
+Estimated transaction fee: 280341 Lovelace
 Transaction successfully submitted.
 Sent token successfully
-
-$CARDANO_CLI query utxo --address $address $NET
-                           TxHash                                 TxIx        Amount
---------------------------------------------------------------------------------------
-42f4a8152ae7a495755aaf6e0e73662111dc92d7051d5f6ade9787bcbaf3cadc     3        9993625130 lovelace + 99999400 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31 + TxOutDatumNone
-
-$CARDANO_CLI query utxo --address addr_test1vz6aay995sa8rdaajlzxlkcldjg9c5zxp7j298a8dhqchrgkasc0m $NET
-                           TxHash                                 TxIx        Amount
---------------------------------------------------------------------------------------
-42f4a8152ae7a495755aaf6e0e73662111dc92d7051d5f6ade9787bcbaf3cadc     0        2000000 lovelace + 100 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31 + TxOutDatumNone
-
-$CARDANO_CLI query utxo --address addr_test1vq88zrwjrqdrzpuv2vp4fxsx2r2skyxkkvlkrdvlyxs9w0gh92vyl $NET
-                           TxHash                                 TxIx        Amount
---------------------------------------------------------------------------------------
-42f4a8152ae7a495755aaf6e0e73662111dc92d7051d5f6ade9787bcbaf3cadc     1        2000000 lovelace + 200 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31 + TxOutDatumNone
-
-$CARDANO_CLI query utxo --address addr_test1vrp5gyf7tv895uns6gyfjh8f0w5r5j66s20y7n877v70hfsjm9n5q $NET
-                           TxHash                                 TxIx        Amount
---------------------------------------------------------------------------------------
-42f4a8152ae7a495755aaf6e0e73662111dc92d7051d5f6ade9787bcbaf3cadc     2        2000000 lovelace + 300 d7dcafac1919b7dbc6afa295c9ab793eeba55e927a6d94ace67a9067.4368756f6e675f546573745f31 + TxOutDatumNone
+Summited TxHash: 730d5107d7d3cfe3d0b1058b410d5a437c0902b6c48d9ab0263dfdaaabb49efb Date: Fri Nov 1 10:41:17 AM +07 2024
 ```
